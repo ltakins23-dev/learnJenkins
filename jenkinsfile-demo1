@@ -9,7 +9,7 @@ pipeline {
                 sh 'date'
                 echo 'Build completed successfully'
                 echo 'Yaaaga'
-                echo 'GitHub webhook integration successful.'
+                echo 'GitHub webhook integration successful!'
                 echo 'Automated build process initiated.'
             }
         }
