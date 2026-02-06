@@ -7,6 +7,9 @@ pipeline {
                 echo 'Build triggered using Jenkinsfile'
                 sh 'ls -la'
                 sh 'date'
+                echo 'Build completed successfully from push event via webhook setup'
+                echo 'Yaaaga'
+                echo 'GitHub webhook integration successful!'
             }
         }
     }
