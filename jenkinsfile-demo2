@@ -22,7 +22,7 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'ltakins23',  //credential id from jenkins
+                    credentialsId: 'Jenkins_Auth',  //credential id from jenkins
                     usernameVariable: 'ltakins23',
                     passwordVariable: 'dckr_pat_Zu4sWhv-2M6rjCDzY5-Xj9MmGbsS'
                 )]) {
