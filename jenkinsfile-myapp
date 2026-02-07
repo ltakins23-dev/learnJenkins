@@ -43,10 +43,10 @@ pipeline {
         stage('Deploy on EC2') {
                     steps {
                         sh '''
-                        echo "Pulling latest image..."
+                        echo "Pulling latest image.."
                         docker pull $IMAGE_NAME:$IMAGE_TAG
 
-                        echo "Stopping old container if exists..."
+                        echo "Stopping old container if exists.."
                         docker stop $CONTAINER || true
 
                         echo "Removing old container if exists..."
