@@ -1,1 +1,40 @@
-This is a demo Jenkinsfile for CI/CD pipeline.
+// docker pipeline with private docker hub registry
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "ltakins23/jenkins-demo" //dockerhub repo name
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME:latest .'
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'ltakins23',  //credential id from jenkins
+                    usernameVariable: 'ltakins23',
+                    passwordVariable: 'dckr_pat_Zu4sWhv-2M6rjCDzY5-Xj9MmGbsS'
+                )]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                }
+            }
+        }
+
+        stage('Push Image') {
+            steps {
+                sh 'docker push $IMAGE_NAME:latest'
+            }
+        }
+    }
+}
